@@ -10,7 +10,9 @@ public class MovieModelClass {
         this.name = name;
         this.img = img;
     }
-
+    public MovieModelClass(String id) {
+        this.id = id;
+    }
     public MovieModelClass() {
     }
 

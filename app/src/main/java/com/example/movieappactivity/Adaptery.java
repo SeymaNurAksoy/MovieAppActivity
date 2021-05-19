@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,8 +18,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.auth.api.Auth;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -47,7 +50,7 @@ public class Adaptery extends RecyclerView.Adapter<Adaptery.MyViewHolder> implem
 
     private CustomItemClickListener customItemClickListener;
 
-
+    MovieModelClass movieModelClass = new MovieModelClass();
 
     public Adaptery(Context mcontext, List<MovieModelClass> mdata,CustomItemClickListener customItemClickListener) {
         this.mcontext = mcontext;
@@ -81,9 +84,10 @@ public class Adaptery extends RecyclerView.Adapter<Adaptery.MyViewHolder> implem
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        holder.id.setText(mdataFilter.get(position).getId());
         holder.name.setText(mdataFilter.get(position).getName());
+        holder.description.setText(mdataFilter.get(position).getDescription());
 
+        holder.id.setText(mdataFilter.get(position).getId());
         //using  glide library to dissplay the image
         //we need  to add a link before the image string
         //https://image.tmdb.org/t/p/w500/...
@@ -101,14 +105,31 @@ public class Adaptery extends RecyclerView.Adapter<Adaptery.MyViewHolder> implem
         holder.btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String email = auth.getCurrentUser().getEmail();
 
-                String name = holder.name.getText().toString();
-                String id = holder.id.getText().toString();
-                HashMap<Object,String> posthashMap =new HashMap<Object, String>();
-                posthashMap.put("name",id);
 
-                database.collection("Post").add(posthashMap).addOnCompleteListener(task ->{
+                String name;
+                String id;
+                id = holder.id.getText().toString();
+
+                FirebaseUser user = auth.getCurrentUser();
+
+                String uuid = user.getUid();
+
+               // String name = holder.name.getText().toString();
+                 name = holder.name.getText().toString();
+
+                HashMap<String,Object> posthashMap =new HashMap<String, Object>();
+                posthashMap.put("name",name);
+                posthashMap.put("email",email);
+                posthashMap.put("id",id);
+                posthashMap.put("uuid",uuid);
+
+
+                database.collection("FavoriListFilms").add(posthashMap).addOnCompleteListener(task ->{
                     if (task.isSuccessful()){
+
+                        Toast.makeText(mcontext.getApplicationContext(), "Favorilere eklendi",Toast.LENGTH_SHORT).show();
 
                     }
                 } ).addOnFailureListener(e ->{
@@ -131,14 +152,16 @@ public class Adaptery extends RecyclerView.Adapter<Adaptery.MyViewHolder> implem
 
  public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-     TextView id;
      TextView name;
+     TextView description;
      ImageView img;
-     Button btn;
+     ImageButton btn;
+     TextView id;
      public MyViewHolder(@NonNull View itemView) {
          super(itemView);
-         id = itemView.findViewById(R.id.textView_id);
-         name = itemView.findViewById(R.id.textView2_name);
+         id = itemView.findViewById(R.id.id);
+         name = itemView.findViewById(R.id.textView_id);
+         description = itemView.findViewById(R.id.textView2_name);
          img = itemView.findViewById(R.id.imageView);
          btn = itemView.findViewById(R.id.kaydet);
          btn = itemView.findViewById(R.id.kaydet);
@@ -158,7 +181,7 @@ public class Adaptery extends RecyclerView.Adapter<Adaptery.MyViewHolder> implem
                         ArrayList<MovieModelClass> tempFilteredList = new ArrayList<>();
                         for (MovieModelClass station : mdata) {
                             // search for station name
-                            if (station.getId().toLowerCase().contains(searchString)) {
+                            if (station.getName().toLowerCase().contains(searchString)) {
                                 tempFilteredList.add(station);
                             }
                         }

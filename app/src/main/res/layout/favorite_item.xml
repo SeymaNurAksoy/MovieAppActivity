@@ -7,14 +7,30 @@
 
     <TextView
         android:id="@+id/nameText"
-        android:layout_width="413dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="6dp"
+        android:layout_width="402dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:background="#FFFFFF"
         android:text="TextView"
-        android:textColor="#090909"
+        android:textColor="#F44336"
         android:textSize="20sp"
+        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/deletebtn"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.979"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameText"
+        app:layout_constraintVertical_bias="0.019"
+        app:srcCompat="@drawable/trash" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

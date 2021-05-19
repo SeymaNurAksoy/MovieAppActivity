@@ -260,8 +260,9 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
                     JSONObject jsonObject1 = jsonArray.getJSONObject(i);
 
                     MovieModelClass model = new MovieModelClass();
-                    model.setId(jsonObject1.getString("title"));
-                    model.setName(jsonObject1.getString("overview"));
+                    model.setId(jsonObject1.getString("id"));
+                    model.setName(jsonObject1.getString("title"));
+                    model.setDescription(jsonObject1.getString("overview"));
                     model.setImg(jsonObject1.getString("poster_path"));
 
                     movieList.add(model);

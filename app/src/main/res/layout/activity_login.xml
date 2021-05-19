@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTintMode="src_in"
+    android:hapticFeedbackEnabled="false"
     tools:context=".LoginActivity">
 
     <EditText
@@ -12,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
         android:ems="10"
-        android:hint="Email Address"
+        android:hint="@string/email_adres"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.079"
@@ -25,41 +27,47 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="180dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/loginbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="260dp"
+        app:cornerRadius="16dp"
         android:text="Giriş"
+        app:backgroundTint="#F44336"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.427"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/createAccountBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="260dp"
         android:text="Kayıt"
+        app:cornerRadius="16dp"
+        app:backgroundTint="@color/nar_çiçeği"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/forgetPasswordBtn"
         android:layout_width="214dp"
         android:layout_height="41dp"
+        app:cornerRadius="16dp"
         android:layout_marginTop="316dp"
         android:text="Şifreni mi unuttun"
+        app:backgroundTint="#F44336"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.073"
         app:layout_constraintStart_toStartOf="parent"

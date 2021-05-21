@@ -5,23 +5,23 @@
     xmlns:appcompat="http://schemas.android.com/tools">
     <item
         android:id="@+id/resetUserPassword"
-        android:title="Şifre sıfırlama" />
+        android:title="@string/reset_password" />
     <item
         android:id="@+id/uptadeEmailMenu"
-        android:title="Mail değiştirme" />
+        android:title="@string/change_mail" />
     <item
         android:id="@+id/delete_account_menu"
-        android:title="Hesap Silme" />
+        android:title="@string/delete_account" />
 
 
-    <item android:id="@+id/favorite_films"  android:title="Favorite Films" />
+    <item android:id="@+id/favorite_films"  android:title="@string/favorite_films" />
     <item android:id="@+id/log_out" android:title="Log Out"></item>
 
 
     <item
         android:id="@+id/menu_search"
         android:icon="@drawable/ic_search_black_24dp"
-        android:title="Search"
+        android:title="@string/search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
 
         app:showAsAction="always" />

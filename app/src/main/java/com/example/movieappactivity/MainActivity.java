@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Movie;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,6 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -60,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
     RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.Theme_MovieAppActivity);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -72,18 +76,47 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
         recyclerView=findViewById(R.id.recylerview);
         GetData getData = new GetData();
         getData.execute();
+     /*   ImageButton shrbtn = (ImageButton) findViewById(R.id.imageButton);
+        TextView shr= (TextView) findViewById(R.id.textView_id);
+
+        shrbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CharSequence mesaj =shr.getText();
+                sharemessage(mesaj);
 
 
+            }
+        });
 
 
+*/
 
     }
+
+    private void sharemessage(CharSequence mesaj) {
+        Intent shareIntent= new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, mesaj);
+        startActivity(Intent.createChooser(shareIntent , "paylaş"));
+    }
+
+
+
+
     @Override
     public void onRefresh() {
-        list.clear();
+       /* list.clear();
         GetData getData = new GetData();
-        getData.execute();
+        getData.execute();*/
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        }, 2000);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -278,12 +311,8 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
     }
 
    private void PutDataIntoRecylerView(List<MovieModelClass> movieList){
-        adaptery = new Adaptery(this, movieList, new CustomItemClickListener() {
-            @Override
-            public void onItemClick(MovieModelClass movie, int position) {
-                Toast.makeText(getApplicationContext(),""+movie.getName(),Toast.LENGTH_SHORT).show();
-            }
-        });
+        adaptery = new Adaptery(this, movieList) ;
+
         recyclerView.setLayoutManager((new LinearLayoutManager(this)));
 
         recyclerView.setAdapter(adaptery);

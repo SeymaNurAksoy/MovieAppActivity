@@ -15,6 +15,8 @@ public class LogOut extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setTheme(R.style.Theme_MovieAppActivity);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logout);
         Button logout = findViewById(R.id.logout);

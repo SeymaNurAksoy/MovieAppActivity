@@ -1,8 +1,11 @@
 package com.example.movieappactivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -37,6 +40,8 @@ public class FavoriteMain extends AppCompatActivity {
     FavoriteAdapter favoriteAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.Theme_MovieAppActivity);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.favorite_activity);
 
@@ -47,9 +52,27 @@ public class FavoriteMain extends AppCompatActivity {
         database = FirebaseFirestore.getInstance();
         verileriAl();
 
+       /* Button ShrBtn = (Button) findViewById(R.id.button2);
+        final RecyclerView recyclerView2= (RecyclerView) findViewById(R.id.recyclerview2);
+        ShrBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String list= String.valueOf(recyclerView2.getTextDirection());
+                share(list);
+            }
+        });*/
 
 
     }
+
+  /*  private void share(String list) {
+        Intent shr =new Intent(Intent.ACTION_SEND);
+        shr.setType("text/plain");
+        shr.putExtra(Intent.EXTRA_TEXT,list );
+        startActivity(Intent.createChooser(shr, "listeyi paylaş"));
+    }*/
+
+
 
 
 
@@ -95,41 +118,3 @@ public class FavoriteMain extends AppCompatActivity {
 
 
 
-/*   private fun setOnRecyclerViewItemSwipedListener() {
-        ItemTouchHelper(object : SimpleCallback(0, LEFT or RIGHT) {
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
-                return false
-            }
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.adapterPosition
-                val swipedProduct = products[position]
-                deleteProduct(position, swipedProduct)
-            }
-
-        }).attachToRecyclerView(dataBinding.productsRecyclerView)
-    }
-
-    private fun deleteProduct(position: Int, product: Product) {
-        displayProgressBar()
-        val isProductDeletedLiveData = viewModel.deleteProduct(product.id!!)
-        isProductDeletedLiveData.observe(this) { dataOrException ->
-            val isProductDeleted = dataOrException.data
-            if (isProductDeleted != null) {
-                if (isProductDeleted) {
-                    products.removeAt(position)
-                    adapter.notifyItemRemoved(position)
-                    adapter.notifyItemRangeChanged(position, products.size)
-                    hideProgressBar()
-                }
-            }
-
-            if (dataOrException.e != null) {
-                logErrorMessage(dataOrException.e!!.message!!)
-            }
-        }
-    }*/

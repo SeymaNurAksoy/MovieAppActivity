@@ -48,15 +48,14 @@ public class Adaptery extends RecyclerView.Adapter<Adaptery.MyViewHolder> implem
     private List<MovieModelClass> mdata;
     private List<MovieModelClass> mdataFilter;
 
-    private CustomItemClickListener customItemClickListener;
 
     MovieModelClass movieModelClass = new MovieModelClass();
 
-    public Adaptery(Context mcontext, List<MovieModelClass> mdata,CustomItemClickListener customItemClickListener) {
+    public Adaptery(Context mcontext, List<MovieModelClass> mdata) {
         this.mcontext = mcontext;
         this.mdata = mdata;
         this.mdataFilter = mdata;
-        this.customItemClickListener = customItemClickListener;
+
     }
 
 
@@ -87,7 +86,7 @@ public class Adaptery extends RecyclerView.Adapter<Adaptery.MyViewHolder> implem
         holder.name.setText(mdataFilter.get(position).getName());
         holder.description.setText(mdataFilter.get(position).getDescription());
 
-        holder.id.setText(mdataFilter.get(position).getId());
+
         //using  glide library to dissplay the image
         //we need  to add a link before the image string
         //https://image.tmdb.org/t/p/w500/...
@@ -110,7 +109,7 @@ public class Adaptery extends RecyclerView.Adapter<Adaptery.MyViewHolder> implem
 
                 String name;
                 String id;
-                id = holder.id.getText().toString();
+
 
                 FirebaseUser user = auth.getCurrentUser();
 
@@ -122,7 +121,7 @@ public class Adaptery extends RecyclerView.Adapter<Adaptery.MyViewHolder> implem
                 HashMap<String,Object> posthashMap =new HashMap<String, Object>();
                 posthashMap.put("name",name);
                 posthashMap.put("email",email);
-                posthashMap.put("id",id);
+
                 posthashMap.put("uuid",uuid);
 
 
@@ -156,10 +155,10 @@ public class Adaptery extends RecyclerView.Adapter<Adaptery.MyViewHolder> implem
      TextView description;
      ImageView img;
      ImageButton btn;
-     TextView id;
+
      public MyViewHolder(@NonNull View itemView) {
          super(itemView);
-         id = itemView.findViewById(R.id.id);
+
          name = itemView.findViewById(R.id.textView_id);
          description = itemView.findViewById(R.id.textView2_name);
          img = itemView.findViewById(R.id.imageView);

@@ -7,5 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="nar_çiçeği">#F44336</color>
+
+    <color name="pink">#FF5252</color>
+    <color name="pomegranate_blossom">#F44336</color>
+    <color name="blood_red">#F81807</color>
+    <color name="light_black">#0B0A0A</color>
+    <color name="dark_black">#090909</color>
+
 </resources>

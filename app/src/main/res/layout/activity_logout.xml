@@ -5,7 +5,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#F44336"
+    android:backgroundTint="@color/pomegranate_blossom"
     android:textAlignment="center">
 
     <com.google.android.material.button.MaterialButton
@@ -15,9 +15,9 @@
         android:layout_height="65dp"
         android:layout_marginStart="56dp"
         android:layout_marginBottom="287dp"
-        android:backgroundTint="#F44336"
+        android:backgroundTint="@color/pomegranate_blossom"
         android:backgroundTintMode="add"
-        android:text="Çıkış"
+        android:text="@string/logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -28,8 +28,8 @@
         android:layout_height="130dp"
         android:layout_marginTop="231dp"
         android:layout_marginBottom="69dp"
-        android:text="Çıkış Yapmak istediğinize emin misiniz ? "
-        android:textColor="#090909"
+        android:text="@string/sure_for_logout"
+        android:textColor="@color/dark_black"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/logout"

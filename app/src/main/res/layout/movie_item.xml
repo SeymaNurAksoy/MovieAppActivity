@@ -8,12 +8,14 @@
     <TextView
         android:id="@+id/textView_id"
         android:layout_width="240dp"
-        android:layout_height="47dp"
+        android:layout_height="0dp"
         android:layout_marginTop="44dp"
-        android:text="TextView"
-        android:textColor="#F81807"
+        android:layout_marginBottom="106dp"
+        android:text="@string/text_view"
+        android:textColor="@color/blood_red"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -28,7 +30,7 @@
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/id"
+        app:layout_constraintStart_toEndOf="@+id/imageButton"
         app:layout_constraintTop_toBottomOf="@+id/textView_id"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/_5304910_200x130" />
@@ -52,30 +54,29 @@
     <TextView
         android:id="@+id/textView2_name"
         android:layout_width="227dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="101dp"
-        android:layout_marginBottom="11dp"
+        android:layout_height="98dp"
         android:backgroundTint="#F44336"
-        android:text="TextView"
-        android:textColor="#0B0A0A"
-        app:layout_constraintBottom_toTopOf="@+id/id"
+        android:text="@string/text_view"
+        android:textColor="@color/light_black"
+        app:layout_constraintBottom_toTopOf="@+id/kaydet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_id"
         app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/id"
-        android:layout_width="93dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="195dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginBottom="16dp"
-        android:text="id"
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="242dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/kaydet"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2_name" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_id"
+        app:srcCompat="@drawable/ic_baseline_share_24" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

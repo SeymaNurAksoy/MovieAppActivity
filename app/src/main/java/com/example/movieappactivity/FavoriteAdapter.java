@@ -78,8 +78,8 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.MyView
            public void onClick(View v) {
                //System.out.println(database.collection("FavoriListFilms").document().get(Source.valueOf("name")));
                movieList.remove(position);
-              // notifyItemRemoved(position);
-              // notifyItemRangeChanged(position,movieList.size());
+               notifyItemRemoved(position);
+               notifyItemRangeChanged(position,movieList.size());
                String name =  movieList.get(position).getName();
 
                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -101,7 +101,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.MyView
                                            @Override
                                            public void onSuccess(Void unused) {
 
-                                               notifyDataSetChanged();
+
                                            }
                                        });
                            }
@@ -112,7 +112,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.MyView
                    }
                });
 
-               notifyDataSetChanged();
+
            }
        });
 

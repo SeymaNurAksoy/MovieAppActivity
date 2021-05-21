@@ -2,7 +2,27 @@
     <string name="app_name">MovieAppActivity</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="email_adres">Email Address</string>
+    <string name="email_address">Email Address</string>
     <string name="password">Password</string>
+    <string name="login">Giriş</string>
+    <string name="register">Kayıt</string>
+    <string name="forgot_password">Şifreni mi unuttun</string>
+    <string name="logout">Çıkış</string>
+    <string name="sure_for_logout">Çıkış Yapmak istediğinize emin misiniz ?</string>
+    <string name="full_name">Full Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="new_password">Yeni Şifre</string>
+    <string name="again_enter">Yeniden giriniz</string>
+    <string name="save">Kaydet</string>
+    <string name="enjoy_for_show">İyi Seyirler</string>
+    <string name="favorite_list">Favori Listen</string>
+    <string name="text_view">TextView</string>
+    <string name="reset_password">Şifre sıfırlama</string>
+    <string name="change_mail">Mail değiştirme</string>
+    <string name="delete_account">Hesap Silme</string>
+    <string name="favorite_films">Favori Filmlerin</string>
+    <string name="log_out">Çıkış</string>
+    <string name="search">Search</string>
+
 
 </resources>

@@ -47,16 +47,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayout.OnRefreshListener{
 
-
-    FirebaseAuth auth;
-    AlertDialog.Builder reset_alert;
-    LayoutInflater inflater;
-    Adaptery adaptery;
-    SwipeRefreshLayout swipeRefreshLayout;
-
-    Button button;
-
-    List<MovieModelClass> list = new ArrayList<>();
+     FirebaseAuth auth;
+     AlertDialog.Builder reset_alert;
+     LayoutInflater inflater;
+     Adaptery adaptery;
+     SwipeRefreshLayout swipeRefreshLayout;
 
     private static  String JSON_URL = "https://api.themoviedb.org/3/movie/popular?api_key=da4bad6c8fcebb12f3f937e118caf830";
     List<MovieModelClass> movieList;
@@ -76,39 +71,14 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
         recyclerView=findViewById(R.id.recylerview);
         GetData getData = new GetData();
         getData.execute();
-     /*   ImageButton shrbtn = (ImageButton) findViewById(R.id.imageButton);
-        TextView shr= (TextView) findViewById(R.id.textView_id);
-
-        shrbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CharSequence mesaj =shr.getText();
-                sharemessage(mesaj);
-
-
-            }
-        });
-
-
-*/
 
     }
-
-    private void sharemessage(CharSequence mesaj) {
-        Intent shareIntent= new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("text/plain");
-        shareIntent.putExtra(Intent.EXTRA_TEXT, mesaj);
-        startActivity(Intent.createChooser(shareIntent , "paylaş"));
-    }
-
-
-
 
     @Override
     public void onRefresh() {
-       /* list.clear();
+        movieList.clear();
         GetData getData = new GetData();
-        getData.execute();*/
+        getData.execute();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -124,9 +94,7 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.option_menu,menu);
 
-
         MenuItem searchItem = menu.findItem(R.id.menu_search);
-
         SearchView searchView = null;
         if (searchItem != null) {
             searchView = (SearchView) searchItem.getActionView();
@@ -137,7 +105,6 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
 
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
 
@@ -148,27 +115,18 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
                     adaptery.getFilter().filter(newText.toString());
                 }
                 return(true);
-
-
             }
         });
-
         return super.onCreateOptionsMenu(menu);
-
-
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
         if (item.getItemId() == R.id.favorite_films) {
             startActivity(new Intent(getApplicationContext(), FavoriteMain.class));
-
         }
-
   if (item.getItemId() == R.id.resetUserPassword) {
             startActivity(new Intent(getApplicationContext(), ResetPassword.class));
-
         }
         if (item.getItemId() == R.id.uptadeEmailMenu) {
             View view = inflater.inflate(R.layout.reset_pop, null);
@@ -242,14 +200,13 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
+   /* @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
-    }
+    }*/
     public class GetData extends AsyncTask<String,String,String>{
         @Override
         protected String doInBackground(String... strings) {
-
             String current ="";
             try{
                 URL url;

@@ -20,7 +20,6 @@ public class ResetPassword extends AppCompatActivity {
     Button savePasswordBtn;
     FirebaseUser user;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.Theme_MovieAppActivity);

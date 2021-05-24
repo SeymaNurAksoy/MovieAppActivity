@@ -52,25 +52,12 @@ public class FavoriteMain extends AppCompatActivity {
         database = FirebaseFirestore.getInstance();
         verileriAl();
 
-       /* Button ShrBtn = (Button) findViewById(R.id.button2);
-        final RecyclerView recyclerView2= (RecyclerView) findViewById(R.id.recyclerview2);
-        ShrBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String list= String.valueOf(recyclerView2.getTextDirection());
-                share(list);
-            }
-        });*/
+
 
 
     }
 
-  /*  private void share(String list) {
-        Intent shr =new Intent(Intent.ACTION_SEND);
-        shr.setType("text/plain");
-        shr.putExtra(Intent.EXTRA_TEXT,list );
-        startActivity(Intent.createChooser(shr, "listeyi paylaş"));
-    }*/
+
 
 
 
@@ -89,7 +76,7 @@ public class FavoriteMain extends AppCompatActivity {
                            String id = (String) document.get("id");
                            String name = (String) document.get("name");
                            String email = (String) document.get("email");
-                           System.out.println(auth.getCurrentUser().getEmail());
+                          // System.out.println(auth.getCurrentUser().getEmail());
                          if(auth.getCurrentUser().getEmail().contains(email)) {
                            //  movielist.add(name);
                              movieModelClass= new MovieModelClass(id,name,email);

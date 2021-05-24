@@ -37,19 +37,15 @@ import java.util.List;
 import java.util.Map;
 
 public class Adaptery extends RecyclerView.Adapter<Adaptery.MyViewHolder> implements Filterable {
-
-
-    private FirebaseStorage storage;
     private FirebaseAuth auth;
     private FirebaseFirestore database;
-
-
+    String email;
+    String name;
+    String uuid;
     private Context mcontext;
     private List<MovieModelClass> mdata;
     private List<MovieModelClass> mdataFilter;
 
-
-    MovieModelClass movieModelClass = new MovieModelClass();
 
     public Adaptery(Context mcontext, List<MovieModelClass> mdata) {
         this.mcontext = mcontext;
@@ -66,27 +62,13 @@ public class Adaptery extends RecyclerView.Adapter<Adaptery.MyViewHolder> implem
         View v;
         LayoutInflater inflater = LayoutInflater.from(mcontext);
         v = inflater.inflate(R.layout.movie_item, parent, false);
-     /*   v.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // for click item listener
-                final MyViewHolder myViewHolder = new MyViewHolder(v);
-                customItemClickListener.onItemClick(mdataFilter.get(myViewHolder.getAdapterPosition()),myViewHolder.getAdapterPosition());
-            }
-        });*/
-
-
-
         return new MyViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
         holder.name.setText(mdataFilter.get(position).getName());
         holder.description.setText(mdataFilter.get(position).getDescription());
-
-
         //using  glide library to dissplay the image
         //we need  to add a link before the image string
         //https://image.tmdb.org/t/p/w500/...
@@ -95,41 +77,22 @@ public class Adaptery extends RecyclerView.Adapter<Adaptery.MyViewHolder> implem
                 .into(holder.img);
 
        // Uri uri = Uri.parse("https://image.tmdb.org/t/p/w500/" + mdataFilter.get(position).getImg());
-     //  System.out.println(uri);
-
-
-        storage = FirebaseStorage.getInstance();
         auth = FirebaseAuth.getInstance();
         database = FirebaseFirestore.getInstance();
         holder.btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = auth.getCurrentUser().getEmail();
-
-
-                String name;
-                String id;
-
-
+                email = auth.getCurrentUser().getEmail();
                 FirebaseUser user = auth.getCurrentUser();
-
-                String uuid = user.getUid();
-
-               // String name = holder.name.getText().toString();
+                 uuid = user.getUid();
                  name = holder.name.getText().toString();
-
-                HashMap<String,Object> posthashMap =new HashMap<String, Object>();
+                HashMap<String,String> posthashMap =new HashMap<String, String>();
                 posthashMap.put("name",name);
                 posthashMap.put("email",email);
-
                 posthashMap.put("uuid",uuid);
-
-
                 database.collection("FavoriListFilms").add(posthashMap).addOnCompleteListener(task ->{
                     if (task.isSuccessful()){
-
                         Toast.makeText(mcontext.getApplicationContext(), "Favorilere eklendi",Toast.LENGTH_SHORT).show();
-
                     }
                 } ).addOnFailureListener(e ->{
                             Toast.makeText(mcontext.getApplicationContext(), e.getLocalizedMessage(),Toast.LENGTH_SHORT).show();
@@ -159,10 +122,9 @@ public class Adaptery extends RecyclerView.Adapter<Adaptery.MyViewHolder> implem
      public MyViewHolder(@NonNull View itemView) {
          super(itemView);
 
-         name = itemView.findViewById(R.id.textView_id);
-         description = itemView.findViewById(R.id.textView2_name);
+         name = itemView.findViewById(R.id.textView_name);
+         description = itemView.findViewById(R.id.textView2_description);
          img = itemView.findViewById(R.id.imageView);
-         btn = itemView.findViewById(R.id.kaydet);
          btn = itemView.findViewById(R.id.kaydet);
 
      }

@@ -3,8 +3,6 @@
     package="com.example.movieappactivity">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,15 +10,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
        >
-        <activity android:name=".ResetPassword"></activity>
-        <activity android:name=".LogOut"></activity>
-        <activity android:name=".FavoriteMain"></activity>
+        <activity android:name=".ResetPassword" />
+        <activity android:name=".LogOut" />
+        <activity android:name=".FavoriteMain" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
-
-
         <activity android:name=".MainActivity"
-
             android:theme="@style/Theme.MovieAppActivity.Launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -15,7 +15,7 @@
 
 
     <item android:id="@+id/favorite_films"  android:title="@string/favorite_films" />
-    <item android:id="@+id/log_out" android:title="Log Out"></item>
+    <item android:id="@+id/log_out" android:title="@string/log_out"></item>
 
 
     <item

@@ -80,10 +80,9 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.MyView
                movieList.remove(position);
                notifyItemRemoved(position);
                notifyItemRangeChanged(position,movieList.size());
-               String name =  movieList.get(position).getName();
 
+               String name =  movieList.get(position).getName();
                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-               String uuid = user.getUid();
                FirebaseFirestore.getInstance().collection("FavoriListFilms")
                        .whereEqualTo("name",name).get()
                        .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
